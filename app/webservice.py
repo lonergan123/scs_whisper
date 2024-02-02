@@ -2,8 +2,8 @@ import logging
 import sys
 import numpy as np
 from fastapi import FastAPI, Request, Query
-from whisper import tokenizer
-from openai_whisper.core import transcribe, language_detection, load_audio
+#from whisper import tokenizer
+#from openai_whisper.core import transcribe, language_detection, load_audio
 
 # Logging
 def get_logger(logger_name):
@@ -45,6 +45,8 @@ async def transcribe():
     return {"message": "Hello Transcription!"}
 
 @app.post("/echo")
-async def echo(echo: str="nothing sent"):
-    return {"message": echo}
-
+async def echo(request: Request):
+   request_body = await request.json()
+   request_body = request_body['data']
+   return request_body
+    
