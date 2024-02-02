@@ -8,9 +8,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --upgrade pip && \
-    pip install fastapi gunicorn uvicorn[standard] ffmpeg-python openai-whisper
+    pip install fastapi gunicorn uvicorn[standard]
 
 WORKDIR /app
 COPY app /app
 
-ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:9000", "--workers", "1", "--timeout", "0", "webservice:app", "-k", "uvicorn.workers.UvicornWorker"]
+ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:9000", "--workers", "1", "--timeout", "0", "main:app", "-k", "uvicorn.workers.UvicornWorker"]
