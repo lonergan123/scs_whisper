@@ -25,12 +25,19 @@ headers = {'Authorization': f'Snowflake Token={token}'}
 
 #%%
 # Set this to the ingress endpoint URL for your service
-url = 'https://anhtm-ahsorg-ahsprod.snowflakecomputing.app/echo'
+url = 'https://anhtu-ahsorg-ahsprod.snowflakecomputing.app/echo'
 
 
 # Validate the connection.
-data = 'testing123 testing 123'
-response = requests.post(f'{url}', data=data, headers=headers)
+# set a varible called data equal to a json object with some sample data
+datasend = {
+    "data": [
+        [0, "transcribe", "en-US", "audio.mp3", True],
+        [1, "transcribe", "en-US", "audio1.mp3", True]
+    ]
+}
+
+response = requests.post(f'{url}', data=datasend, headers=headers)
 print(response.text)
 
 
