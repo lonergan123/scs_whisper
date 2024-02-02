@@ -1,7 +1,5 @@
-import logging
-import sys
 import numpy as np
-from fastapi import FastAPI, Request, Query
+from fastapi import FastAPI, Request
 
 app = FastAPI()
 
