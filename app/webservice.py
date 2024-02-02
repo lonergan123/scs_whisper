@@ -36,15 +36,9 @@ app = FastAPI()
 #       return_data.append([index, transcription])
 #    return {"data": return_data}
 
-@app.post("/detect-language", tags=["Endpoints"])
-async def detect_language(test_file: str = 'no_file_provided.mp3'):
-   # get the audio file in volumne mount /audio_files + the file name passed into audio_file_name
-   # if audio_file_name is null then use 'common_voice_de_37364758.mp3'
-   # audio_file_path = 'audio_files/' + audio_file_name
-   #audio_file = load_audio(audio_file_path, True)
-   # detected_lang_code = language_detection(audio_file_path)
-   print(test_file)
-   return test_file
+@app.post("/detect-language")
+def detect_language():
+   return "Working!"
 
 # @app.post("/detect-language", tags=["Endpoints"])
 # async def detect_language(request: Request):
