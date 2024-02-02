@@ -40,14 +40,11 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
-# @app.post("/detect-language", tags=["Endpoints"])
-# async def detect_language(request: Request):
-#    # audio_file: Union[str, None] = Query(default=None),
-#    # encode : bool = Query(default=True, description="Encode audio first through ffmpeg")
-#    request_body = await request.json()
-#    request_body = request_body['data']
-#    return_data = []
-#    for index, audio_file, encode in request_body:
-#       detected_lang_code = language_detection(load_audio(audio_file, encode))
-#       return_data.append([index, { "detected_language": tokenizer.LANGUAGES[detected_lang_code], "language_code" : detected_lang_code }])
-#    return {"data": return_data}
+@app.get("/transcribe")
+async def transcribe():
+    return {"message": "Hello Transcription!"}
+
+@app.post("/echo")
+async def echo(echo: str="nothing sent"):
+    return {"message": echo}
+
