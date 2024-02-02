@@ -36,9 +36,9 @@ app = FastAPI()
 #       return_data.append([index, transcription])
 #    return {"data": return_data}
 
-@app.post("/detect-language")
-def detect_language():
-   return "Working!"
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 # @app.post("/detect-language", tags=["Endpoints"])
 # async def detect_language(request: Request):

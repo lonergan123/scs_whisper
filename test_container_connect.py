@@ -25,7 +25,7 @@ headers = {'Authorization': f'Snowflake Token={token}'}
 
 #%%
 # Set this to the ingress endpoint URL for your service
-url = 'https://anhta-ahsorg-ahsprod.snowflakecomputing.app/detect_language:9000'
+url = 'http://anhte-ahsorg-ahsprod.snowflakecomputing.app/api/detect_language'
 
 # Validate the connection.
 response = requests.get(f'{url}', headers=headers)
