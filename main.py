@@ -1,4 +1,5 @@
 import logging
+import sys
 import numpy as np
 from fastapi import FastAPI, Request
 import whisper 
