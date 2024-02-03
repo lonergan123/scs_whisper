@@ -47,7 +47,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
     A NumPy array containing the audio waveform, in float32 dtype.
     """
   
-    #audio_bytes = requests.get(file).content
+    audio_bytes = open(file, "rb")
     if encode:
         try:
             # ffmpeg to read audio data from requests
@@ -62,7 +62,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
                 "-ar", str(16000),
                 "-"
             ]
-            out = run(cmd, capture_output=True, input='/audio_files/SampleMedDictation.mp3', check=True).stdout
+            out = run(cmd, capture_output=True, input=audio_bytes, check=True).stdout
         except Exception as e:
             raise RuntimeError(f"Failed to load audio: {e.stderr.decode()}") from e
 
