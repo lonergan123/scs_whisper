@@ -5,7 +5,7 @@ from typing import Union
 from threading import Lock
 import torch
 import whisper
-import requests
+#import requests
 import numpy as np
 from subprocess import run
 
