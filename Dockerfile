@@ -1,6 +1,13 @@
 FROM nvcr.io/nvidia/pytorch:23.08-py3 
 
-RUN pip install fastapi gunicorn uvicorn[standard]
+# Install FFMPEG
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -qq update \
+    && apt-get -qq install --no-install-recommends \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install fastapi gunicorn uvicorn[standard] ffmpeg-python openai-whisper
 
 COPY . .
 
