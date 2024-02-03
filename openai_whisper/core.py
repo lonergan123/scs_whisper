@@ -25,7 +25,7 @@ logger = get_logger('snowpark-container-service')
 model_name= os.getenv("ASR_MODEL", "base")
 if torch.cuda.is_available():
     logger.debug(f"Running on GPU")
-    model = whisper.load_model('/whisper_models/tiny.en.pt', download_root='/whisper_models').cuda()
+    model = whisper.load_model(model_name, download_root='/whisper_models').cuda()
 else:
     logger.debug(f"Running on CPU")
     model = whisper.load_model(model_name, download_root='/whisper_models')
