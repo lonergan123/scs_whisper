@@ -44,3 +44,4 @@ async def readstage():
 async def transcripe_stage_audio():  
     result = transcribe(load_audio("/audio_files/SampleMedDictation.mp3"))
     return result["text"]
+
