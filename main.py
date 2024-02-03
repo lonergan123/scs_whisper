@@ -16,3 +16,9 @@ async def echo(request: Request):
    request_body = await request.json()
    request_body = request_body['data']
    return request_body
+
+@app.post("/readstage")
+async def readstage():  
+    f = open('audio_files/test_stage_file.txt', 'r')
+    file_contents = f.read()
+    return file_contents
