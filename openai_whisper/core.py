@@ -47,7 +47,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
     A NumPy array containing the audio waveform, in float32 dtype.
     """
     # Creating Snowpark Session
-    audio_bytes = open('file', 'b')
+    audio_bytes = open(file, 'b')
     #audio_bytes = requests.get(file).content
     if encode:
         try:
