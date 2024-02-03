@@ -65,7 +65,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
 
     return np.frombuffer(out, np.int16).flatten().astype(np.float32) / 32768.0
 
-def transcribe(audio):
+def transcribe():
     with model_lock:
-        result = model.transcribe(audio)
+        result = model.transcribe("/audio_files/SampleMedDictation.mp3")
     return result
