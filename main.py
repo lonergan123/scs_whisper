@@ -19,6 +19,6 @@ async def echo(request: Request):
 
 @app.get("/readstage")
 async def readstage():  
-    f = open('audio_files/test_stage_file.txt', 'r')
+    f = open('/audio_files/test_stage_file.txt', 'r')
     file_contents = f.read()
     return file_contents
