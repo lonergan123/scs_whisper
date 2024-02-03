@@ -47,7 +47,6 @@ def load_audio(file: str, encode=True, sr: int = 16000):
     A NumPy array containing the audio waveform, in float32 dtype.
     """
   
-    #audio_bytes = open(file, "rb")
     if encode:
         try:
             # ffmpeg to read audio data from requests
@@ -68,14 +67,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
 
     return np.frombuffer(out, np.int16).flatten().astype(np.float32) / 32768.0
 
-def transcribe(
-    audio,
-    task: Union[str, None],
-    language: Union[str, None],
-):
-    options_dict = {"task" : task}
-    if language:
-        options_dict["language"] = language
+def transcribe(audio):
     with model_lock:
-        result = model.transcribe(audio, **options_dict)
+        result = model.transcribe(audio=audio)
     return result
