@@ -47,7 +47,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
     A NumPy array containing the audio waveform, in float32 dtype.
     """
   
-    audio_bytes = open(file, "rb")
+    #audio_bytes = open(file, "rb")
     if encode:
         try:
             # ffmpeg to read audio data from requests
@@ -55,7 +55,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
                 "ffmpeg",
                 "-nostdin",
                 "-threads", "0",
-                "-i", 'pipe:',
+                "-i", file,
                 "-f", "s16le",
                 "-ac", "1",
                 "-acodec", "pcm_s16le",
