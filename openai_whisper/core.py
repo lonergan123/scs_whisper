@@ -36,8 +36,6 @@ def load_audio(file: str, encode=True, sr: int = 16000):
     Open an audio file object and read as mono waveform, resampling as necessary.
     Parameters
     ----------
-    file: str
-        PRESIGNED_URL as described here https://docs.snowflake.com/en/sql-reference/functions/get_presigned_url
     encode: Boolean
         If true, encode audio stream to WAV before sending to whisper
     sr: int
