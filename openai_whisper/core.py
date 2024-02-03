@@ -46,8 +46,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
     -------
     A NumPy array containing the audio waveform, in float32 dtype.
     """
-    # Creating Snowpark Session
-    audio_bytes = open(file, 'b')
+  
     #audio_bytes = requests.get(file).content
     if encode:
         try:
@@ -63,7 +62,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
                 "-ar", str(16000),
                 "-"
             ]
-            out = run(cmd, capture_output=True, input=audio_bytes, check=True).stdout
+            out = run(cmd, capture_output=True, input=file, check=True).stdout
         except Exception as e:
             raise RuntimeError(f"Failed to load audio: {e.stderr.decode()}") from e
 
