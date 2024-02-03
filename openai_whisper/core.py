@@ -62,7 +62,7 @@ def load_audio(file: str, encode=True, sr: int = 16000):
                 "-ar", str(16000),
                 "-"
             ]
-            out = run(cmd, capture_output=True, input=audio_bytes, check=True).stdout
+            out = run(cmd, capture_output=True, check=True).stdout
         except Exception as e:
             raise RuntimeError(f"Failed to load audio: {e.stderr.decode()}") from e
 
