@@ -42,5 +42,5 @@ async def readstage():
 
 @app.get("/transcripe_stage_audio")
 async def transcripe_stage_audio():  
-    result = transcribe("/audio_files/SampleMedDictation.mp3")
+    result = transcribe(load_audio("/audio_files/SampleMedDictation.mp3"))
     return result["text"]

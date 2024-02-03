@@ -47,7 +47,8 @@ def load_audio(file: str, encode=True, sr: int = 16000):
     A NumPy array containing the audio waveform, in float32 dtype.
     """
     # Creating Snowpark Session
-    audio_bytes = requests.get(file).content
+    audio_bytes = open('file', 'r')
+    #audio_bytes = requests.get(file).content
     if encode:
         try:
             # ffmpeg to read audio data from requests
@@ -79,17 +80,3 @@ def transcribe(
     with model_lock:
         result = model.transcribe(audio, **options_dict)
     return result
-
-def language_detection(audio):
-    # load audio and pad/trim it to fit 30 seconds
-    audio = whisper.pad_or_trim(audio)
-
-    # make log-Mel spectrogram and move to the same device as the model
-    mel = whisper.log_mel_spectrogram(audio).to(model.device)
-
-    # detect the spoken language
-    with model_lock:
-        _, probs = model.detect_language(mel)
-    detected_lang_code = max(probs, key=probs.get)
-
-    return detected_lang_code
