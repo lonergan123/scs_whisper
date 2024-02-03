@@ -67,5 +67,5 @@ def load_audio(file: str, encode=True, sr: int = 16000):
 
 def transcribe(audio):
     with model_lock:
-        result = model.transcribe(audio=audio)
+        result = model.transcribe(audio)
     return result
