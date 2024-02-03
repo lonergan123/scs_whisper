@@ -2,7 +2,8 @@ import logging
 import sys
 import numpy as np
 from fastapi import FastAPI, Request
-import whisper 
+# open-ai-whisper package wants to communicate with the internet, and so using a local copy of core.py, as per approach from Michael Gorkow
+from openai_whisper.core import transcribe, language_detection, load_audio
 
 # Logging
 def get_logger(logger_name):
@@ -41,6 +42,5 @@ async def readstage():
 
 @app.get("/transcripe_stage_audio")
 async def transcripe_stage_audio():  
-    model = whisper.load_model("tiny.en", download_root="/whisper_models")
-    result = model.transcribe(whisper.load_audio("/audio_files/SampleMedDictation.mp3"))
+    result = transcribe("/audio_files/SampleMedDictation.mp3")
     return result["text"]
