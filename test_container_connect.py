@@ -27,7 +27,7 @@ headers = {'Authorization': f'Snowflake Token={token}'}
 #%%
 
 # Set this to the ingress endpoint URL for the whisper service
-url = 'https://anhxu-ahsorg-ahsprod.snowflakecomputing.app'
+url = 'https://anhx4-ahsorg-ahsprod.snowflakecomputing.app'
 
 # Validate the connection.
 response = requests.get(f'{url}', headers=headers)
@@ -46,3 +46,5 @@ response = requests.post(f'{url_post}', json=datasend, headers=headers)
 print(response.text)
 
 #works!
+
+# %%

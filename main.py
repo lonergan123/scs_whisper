@@ -39,8 +39,7 @@ async def readstage():
 @app.post("/transcripe_stage_audio")
 async def transcripe_stage_audio(request: Request):
    request_body = await request.json()
-   request_body = request_body['audio_file_path']
+   audio_file_path = request_body['audio_file_path']
    #from request body get the value of audio_file_path
-   audio_file_path = request_body['audio_file_path']  
    whisper_result = transcribe(audio_file_path)
    return whisper_result['text']
