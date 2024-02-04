@@ -24,8 +24,10 @@ token = f'\"{token_extract}\"'
 headers = {'Authorization': f'Snowflake Token={token}'}
 # add content type to headers =application/json
 
-# Set this to the ingress endpoint URL for your service
-url = 'https://anhue-ahsorg-ahsprod.snowflakecomputing.app'
+#%%
+
+# Set this to the ingress endpoint URL for the whisper service
+url = 'https://anhxu-ahsorg-ahsprod.snowflakecomputing.app'
 
 # Validate the connection.
 response = requests.get(f'{url}', headers=headers)
@@ -35,13 +37,12 @@ print(response.text)
 # try a post request
 # set a varible called data equal to a json object with some sample data
 datasend = {
-    "data" :"John"
-    ,"something_else" :"doe"
-}
+        "audio_file_path" :"/audio_files/SampleMedDictation.mp3"
+    }
 
-url = 'https://anhue-ahsorg-ahsprod.snowflakecomputing.app/echo'
+url_post = url + "/transcripe_stage_audio"
 
-response = requests.post(f'{url}', json=datasend, headers=headers)
+response = requests.post(f'{url_post}', json=datasend, headers=headers)
 print(response.text)
 
 #works!
