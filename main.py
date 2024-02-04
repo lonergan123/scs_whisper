@@ -42,6 +42,6 @@ async def readstage():
 
 @app.get("/transcripe_stage_audio")
 async def transcripe_stage_audio():  
-    result = transcribe()
-    return result["text"]
+    whisper_result = transcribe()
+    return whisper_result
 
