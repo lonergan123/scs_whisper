@@ -24,10 +24,6 @@ app = FastAPI()
 async def root():
     return {"message": "Hello World"}
 
-@app.get("/transcribe")
-async def transcribe():
-    return {"message": "Hello Transcription!"}
-
 @app.post("/echo")
 async def echo(request: Request):
    request_body = await request.json()
@@ -41,6 +37,6 @@ async def readstage():
     return file_contents
 
 @app.get("/transcripe_stage_audio")
-async def transcripe_stage_audio():  
-    whisper_result = await transcribe()
+def transcripe_stage_audio():  
+    whisper_result = transcribe()
     return whisper_result
