@@ -1,0 +1,25 @@
+spec:
+  container:
+  - name: whisper-service-container
+    image: ahsorg-ahsprod.registry.snowflakecomputing.com/db_team_jenkins/kl_test_jenkins/kl_jenkins_repository/whisper_app:latest
+    env:
+      ASR_MODEL: /whisper-models/tiny.en.pt
+      ASR_ENGINE: openai_whisper
+    volumeMounts:
+    - name: audio-files
+      mountPath: /audio_files
+    - name: whisper-models
+      mountPath: /whisper-models
+  endpoint:
+  - name: api
+    port: 9000
+    public: true
+  volume:
+  - name: audio-files
+    source: "@audio_files"
+    uid: 1000
+    gid: 1000
+  - name: whisper-models
+    source: "@whisper_models"
+    uid: 1000
+    gid: 1000
